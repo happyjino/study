@@ -1,0 +1,39 @@
+ch02-1
+nodejs 프로젝트의 시작 : 디렉터리 만들기 > package.json 파일 만들기(npm init 명령 실행)
+npm install 옵션에 --save와 --save-dev에 대해서 알아보자. 단축은 각각 -S, -D이다.
+-S는 프로젝트 실행에 필요한 패키지이고 package.json의 dependencies 항목에 등록된다.
+-D는 프로젝트 개발에 필요한 패키지이고 package.json의 devDependencies 항목에 등록된다.
+
+프로젝트 실행할 때, npm i -D typescript ts-node 명령을 실행해서 다른 사용자에게 설치 안되어있는 경우를 대비한다!
+또한 TypeScript는 기본으로 제공하는 타입들의 존재도 그냥 알지 못하므로 Promise와 같은 타입을 사용하려면 
+npm i -D @types/node로 @types/node 패키지를 설치해줘야 한다!
+이를 실행하면 패키지 등록은 물론, node_modules가 생성된다.
+
+이전에 내가 몰랐던 것이다. 프로젝트를 진행하며 알게 됐는데
+다른 사람들에게 프로젝트를 줄때는 node_modules가 무겁기에 빼고 준다.
+그렇기에 npm -i로 시작해야 package-json의 내용을 토대로 패키지를 구성한다.
+
+TS 프로젝트는 TS 컴파일러의 설정 파일인 tsconfig.json이 필요하다. tsc --init 명령으로 만든다.
+만들면 많은 필요한 옵션이 비활성화 되어있다. 필요한 옵션만 설정해서 간략하게 한다.
+tsconfig.json을 보면 기본 옵션을 세팅했다. 책을 따라했다. 설명은 2-3절
+프로젝트 시작시 이걸 기본으로 한다.
+
+index.ts로 파일명을 짓는 이유는 파일명을 생략하고 명령을 실행해도 된다. ex) ts-node ./src 이렇게!
+
+package.json의 파일을 수정할 것이다. 개발할 때는 ts-node를 사용하지만 개발이 완료되면 node로 실행하기 때문!
+scripts 항목의 dev, build 명령을 추가한다! 
+dev 명령은 개발 중에 src의 index.ts를 실행하기 위해!
+build 명령은 개발 후 배포하기 위해 dist 디렉터리에 JS 파일을 만들 때 사용!
+탐색기 옆의 ... 메뉴를 누르면 NPM 스크립트가 있다.
+여기에 package.json의 scripts 항목에 등록한 명령이 있다.
+이 명령들은 "npm run 명령" 형태로 사용한다
+
+npm run dev 실행하면 index.ts 파일을 컴파일하고 실행한다!
+이때 터미널에 >ts-node src가 보일텐데 이는 dev 명령에 정의된 명령이다!
+
+npm run build를 실행하면 dist 디렉터리에 JS 파일을 만들게 된다!
+
+이번 공부를 통해 그동안 프로젝트동안 아무 의미 모르고 쳤던 명령어들을 알게 됐고,
+배웠지만 까먹어버렸던 각 파일들의 의미를 다시 알게 되었다! 그리고 더 알게 되었다!
+이젠 더 잘 기억할 수 있을 것 같다!!!
+
